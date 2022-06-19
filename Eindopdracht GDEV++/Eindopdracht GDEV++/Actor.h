@@ -1,12 +1,11 @@
 #pragma once
-#include "Maths.h"
+#include "Vector2.h"
 #include "PhysicsObject.h"
 #include <SFML\Graphics.hpp>
 
 class Actor : public PhysicsObject
 {
 public:
-	virtual void Update(float dt);
 	bool CheckCollision(Actor* B);
 	void SetPos(Vector2 pos);
 	Vector2 GetPos();
@@ -21,7 +20,6 @@ public:
 	Vector2 position;
 	Vector2 direction; // Vector2(0, -1);
 
-	void Update();
 */
 
 };

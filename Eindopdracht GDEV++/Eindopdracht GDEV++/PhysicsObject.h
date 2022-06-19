@@ -1,5 +1,5 @@
 #pragma once
-#include "Maths.h"
+#include "Vector2.h"
 #include <SFML\Graphics.hpp>
 
 class PhysicsObject
@@ -10,7 +10,8 @@ public:
 	Vector2 GetWidthHeight();
 	void UpdatePhysics(float dt, sf::Window& gameview);
 	Vector2 moveSpeed = Vector2(0,0);
-	Vector2 gravityAndFriction = Vector2(0,0);
+	Vector2 gravity = Vector2(0,0);
+	Vector2 friction = Vector2(0,0);
 
 protected:
 	float gameSpeed = 1;

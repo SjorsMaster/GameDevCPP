@@ -4,7 +4,7 @@
 #include <iostream>
 #include <SFML\Audio.hpp>
 #include <SFML\Graphics.hpp>
-#include "Maths.h" 
+#include "Vector2.h" 
 #include "AngyMan.h" 
 #include "Eindopdracht GDEV++.h"
 
@@ -26,7 +26,7 @@ std::list<AngyMan*> angymanList;
 sf::Texture texture;
 sf::Texture texture2;
 
-Vector2 acceleration = Vector2(0.1f,0);
+Vector2 acceleration = Vector2(750, 0);
 
 int main() {
 	//Should remove the full location name after, but for debugging it doesn't load the sprites otherwise
@@ -64,11 +64,12 @@ int main() {
 	//Player data
 	Actor p;
 	p.body.setTexture(texture);
-	Vector2 tmp = p.GetPos();
-	p.SetPos(Vector2(tmp.x * .65f, tmp.y * 1));
+	Vector2 tmp = p.GetWidthHeight();
+	p.SetWidthHeight(Vector2(tmp.x * .65f, tmp.y * 1));
 	p.fixBounds();
-	p.gravityAndFriction = Vector2(-1, 0);
-	
+	p.gravity = Vector2(0, 0);
+	p.friction = Vector2(400, 0);
+
 	int lastState = -1;
 
 	//Open a window
@@ -152,16 +153,15 @@ int main() {
 
 /// [!] They want the friction in a rigibody class oop! Do it with weight too!!
 void checkKeys(Actor& p, float deltaTime, sf::RenderWindow& window) {
+	//We multiply it by time so that the acceleration value is around the same as gravity and friction
+	Vector2 accelerationPerFrame = acceleration * deltaTime;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-		//Move left
-		p.ApplyForce(-acceleration);
-		//p.moveSpeed -= p.acceleration * deltaTime;
+		p.ApplyForce(-accelerationPerFrame);
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-		p.ApplyForce(acceleration);
-		//Move right
-		//p.moveSpeed += p.acceleration * deltaTime;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+		p.ApplyForce(accelerationPerFrame);
 	}
+
 	p.UpdatePhysics(deltaTime, window);
 }
 
@@ -174,14 +174,16 @@ void RunGame(sf::RenderWindow& window, Actor& player, std::list <AngyMan*>& angy
 		// get an angyman from the index of iter out of the list
 		AngyMan* badguy = *iter;
 
-		badguy->Update(deltaTime);
-
+		badguy->UpdatePhysics(deltaTime, window);
+		badguy->body.setPosition(badguy->GetPos().x, badguy->GetPos().y);
+		
+		//std::cout << "poepen " << badguy->GetPos().x << " plassen " << badguy->GetPos().y << std::endl;
 
 		window.draw(badguy->body);
 
 		//badguy. //fetch distance
 		// fetch position on y axis and then execute the collsion check
-		
+
 		//check collision between player and angyman
 		if (player.CheckCollision(badguy)) {
 			points++;
@@ -207,7 +209,7 @@ void RunGame(sf::RenderWindow& window, Actor& player, std::list <AngyMan*>& angy
 	}
 
 	//spawn enemy every 5 seconds
-	if (clock.getElapsedTime().asSeconds() > (10 / (points + 1))) {
+	if (clock.getElapsedTime().asSeconds() > (3 / (points + 1))) {
 		spawnEnemy(angymanList, enemySprite, windowWH);
 		clock.restart();
 	}
@@ -225,20 +227,25 @@ void RunGame(sf::RenderWindow& window, Actor& player, std::list <AngyMan*>& angy
 //Using an enum for gamestate in function seemed to cause some issues, so I'm using an int instead as recommended by others online
 void SetUpGame(sf::Text& score, int& points, int& missed, sf::Sound& sound, Actor& player, std::list <AngyMan*>& angymanList, int& state) {
 	//Player stuff setup
-	player.moveSpeed = Vector2(0,0);
-	player.SetPos(Vector2(windowWH.x / 2 - player.GetWidthHeight().x / 2, (windowWH.y * .9f) - player.GetWidthHeight().y / 2));
+	player.moveSpeed = Vector2(0, 0);
+	player.SetPos(
+		Vector2(
+			windowWH.x / 2 - player.GetWidthHeight().x / 2,
+			(windowWH.y * .9f) - player.GetWidthHeight().y / 2
+		)
+	);
 
 	//Score values setup
 	points = 0;
 	missed = 0;
-	
+
 	//Text setup
 	score.setPosition(10, 10);
 	score.setString("Score: " + std::to_string(points) + "\nMissed: " + std::to_string(missed));
-	
+
 	//Sound setup
 	sound.play();
-	
+
 	for (AngyMan* a : angymanList) {
 		a->~AngyMan();
 		delete a;

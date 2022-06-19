@@ -167,14 +167,14 @@
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </AdditionalIncludeDirectories>
     </ClCompile>
-    <ClCompile Include="Maths.cpp" />
+    <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="PhysicsObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
     <ClInclude Include="AngyMan.h" />
     <ClInclude Include="Eindopdracht GDEV++.h" />
-    <ClInclude Include="Maths.h" />
+    <ClInclude Include="Vector2.h" />
     <ClInclude Include="PhysicsObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,13 +1,4 @@
 #include "Actor.h"
-void Actor::Update(float dt)
-{
-	/*
-		//add sprite offset based on width+height
-
-			velocity += acceleration;
-			position = position + direction.normalize() * velocity;
-	*/
-}
 
 //collision check
 bool Actor::CheckCollision(Actor* B)
@@ -35,5 +26,10 @@ Vector2 Actor::GetPos()
 
 void Actor::fixBounds()
 {
-	body.setScale(sf::Vector2f(widthHeight.x / body.getTexture()->getSize().x, widthHeight.y / body.getTexture()->getSize().y));
+	body.setScale(
+		sf::Vector2f(
+			widthHeight.x / body.getTexture()->getSize().x, 
+			widthHeight.y / body.getTexture()->getSize().y
+		)
+	);
 }

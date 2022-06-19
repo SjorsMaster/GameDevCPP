@@ -1,3 +1,6 @@
-﻿  Eindopdracht GDEV++.cpp
+﻿  AngyMan.cpp
+D:\Git\GameDevCPP\Eindopdracht GDEV++\Eindopdracht GDEV++\AngyMan.cpp(23,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\Git\GameDevCPP\Eindopdracht GDEV++\Eindopdracht GDEV++\AngyMan.cpp(24,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Eindopdracht GDEV++.cpp
 D:\Git\GameDevCPP\Eindopdracht GDEV++\Eindopdracht GDEV++\Eindopdracht GDEV++.cpp(36,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Eindopdracht GDEV++.vcxproj -> D:\Git\GameDevCPP\Eindopdracht GDEV++\Debug\Eindopdracht GDEV++.exe
