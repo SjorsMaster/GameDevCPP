@@ -1,7 +1,9 @@
-﻿  Eindopdracht GDEV++.cpp
-D:\Offline Projects\Eindopdracht GDEV++\Eindopdracht GDEV++\Eindopdracht GDEV++.cpp(35,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-D:\Offline Projects\Eindopdracht GDEV++\Eindopdracht GDEV++\Eindopdracht GDEV++.cpp(242,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-Actor.obj : error LNK2001: unresolved external symbol __imp___calloc_dbg
-Eindopdracht GDEV++.obj : error LNK2001: unresolved external symbol __imp___CrtDbgReport
-Eindopdracht GDEV++.obj : error LNK2001: unresolved external symbol __imp___invalid_parameter
-D:\Offline Projects\Eindopdracht GDEV++\Release\Eindopdracht GDEV++.exe : fatal error LNK1120: 3 unresolved externals
+﻿  Actor.cpp
+  AngyMan.cpp
+D:\Git\GameDevCPP\Eindopdracht GDEV++\Eindopdracht GDEV++\AngyMan.cpp(19,78): error C2039: 'speed': is not a member of 'AngyMan'
+D:\Git\GameDevCPP\Eindopdracht GDEV++\Eindopdracht GDEV++\AngyMan.h(3): message : see declaration of 'AngyMan'
+D:\Git\GameDevCPP\Eindopdracht GDEV++\Eindopdracht GDEV++\AngyMan.cpp(30,33): warning C4305: '*=': truncation from 'double' to 'float'
+D:\Git\GameDevCPP\Eindopdracht GDEV++\Eindopdracht GDEV++\AngyMan.cpp(34,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\Git\GameDevCPP\Eindopdracht GDEV++\Eindopdracht GDEV++\AngyMan.cpp(35,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Physics.cpp
+  Player.cpp

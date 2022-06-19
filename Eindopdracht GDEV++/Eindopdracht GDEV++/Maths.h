@@ -17,6 +17,9 @@ public:
 
 	// Overload subtract (-) operator
 	Vector2 operator-(const Vector2& vec);
+	
+	// Overload unary negation (-) operator
+	Vector2 operator-();
 
 	// Overload add equals (+=) operator
 	void operator+=(const Vector2& vec);
@@ -31,6 +34,8 @@ public:
 	// Overload divide (/) operator (scalar division)
 	// x = x / s, y = y / s
 	Vector2 operator/(const float s);
+	
+	Vector2 operator%(const Vector2& s);
 
 	// Magnitude (vector length)
 	// Use Pythagorian theorem

@@ -1,19 +1,16 @@
 #pragma once
 #include "Maths.h"
+#include "PhysicsObject.h"
 #include <SFML\Graphics.hpp>
 
-class Actor
+class Actor : public PhysicsObject
 {
 public:
 	virtual void Update(float dt);
+	bool CheckCollision(Actor* B);
 	void SetPos(Vector2 pos);
-	Vector2 WidthHeight;
 	Vector2 GetPos();
-	float moveSpeed = 0;
-	float speed = 1;
-	const float acceleration = 100.0f;
-	Vector2 position;
-	Vector2 widthHeight = Vector2(160,160);
+	//const float acceleration = 100.0f;
 	void fixBounds();
 
 	sf::Sprite body;
