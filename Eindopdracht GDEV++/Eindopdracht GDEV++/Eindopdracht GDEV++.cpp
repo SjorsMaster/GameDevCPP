@@ -15,7 +15,6 @@ enum Gamestate {
 	Start,
 	Playing,
 	GameOver,
-	Win,
 	Pause
 };
 int state = Start;
@@ -27,11 +26,12 @@ sf::Texture texture;
 sf::Texture texture2;
 
 Vector2 acceleration = Vector2(750, 0);
+float maxSpeed = 450;
 
 int main() {
 	//Should remove the full location name after, but for debugging it doesn't load the sprites otherwise
-	texture.loadFromFile("sjors is a bottom2.png");
-	texture2.loadFromFile("ooppppp.png");
+	texture.loadFromFile("nico.png");
+	texture2.loadFromFile("mochi.png");
 
 	srand(time(NULL));
 
@@ -109,9 +109,6 @@ int main() {
 				SetUpGame(text, points, missed, sound, p, angymanList, state);
 			}
 			break;
-		case Win:
-			//win screen
-			break;
 		case Pause:
 			text.setString("Paused");
 			break;
@@ -125,16 +122,9 @@ int main() {
 				window.close();
 				break;
 			case sf::Event::LostFocus:
-				//std::cout << "\a"; //Out of focus beepboopboop :)
 				lastState = state;
 				state = Pause;
 				break;
-				/*
-				case sf::Event::Resized:
-					windowWH.x = evnt.size.width;
-					windowWH.y = evnt.size.height;
-					break;
-				*/
 			case sf::Event::GainedFocus:
 				state = lastState;
 				text.setString("Score: " + std::to_string(points) + "\nMissed: " + std::to_string(missed));
@@ -176,13 +166,10 @@ void RunGame(sf::RenderWindow& window, Actor& player, std::list <AngyMan*>& angy
 
 		badguy->UpdatePhysics(deltaTime, window);
 		badguy->body.setPosition(badguy->GetPos().x, badguy->GetPos().y);
-		
+
 		//std::cout << "poepen " << badguy->GetPos().x << " plassen " << badguy->GetPos().y << std::endl;
 
 		window.draw(badguy->body);
-
-		//badguy. //fetch distance
-		// fetch position on y axis and then execute the collsion check
 
 		//check collision between player and angyman
 		if (player.CheckCollision(badguy)) {
@@ -190,6 +177,7 @@ void RunGame(sf::RenderWindow& window, Actor& player, std::list <AngyMan*>& angy
 			text.setString("Score: " + std::to_string(points) + "\nMissed: " + std::to_string(missed));
 			std::cout << *iter << ": Captured!" << std::endl;
 			iter = angymanList.erase(iter);
+			sound.setPitch((float)(rand() % 100 + 10) / 100);
 			sound.play();
 			badguy->~AngyMan();
 			delete badguy;
@@ -208,14 +196,28 @@ void RunGame(sf::RenderWindow& window, Actor& player, std::list <AngyMan*>& angy
 		}
 	}
 
-	//spawn enemy every 5 seconds
-	if (clock.getElapsedTime().asSeconds() > (3 / (points + 1))) {
+	float& speed = player.moveSpeed.x;
+	if (abs(speed) > maxSpeed) {
+		speed = speed > 0 ? maxSpeed : -maxSpeed;
+	}
+
+	//spawn enemy based on score
+	float pps = (points + 6) * 0.03f;
+	if (clock.getElapsedTime().asSeconds() > 1 / pps) {
 		spawnEnemy(angymanList, enemySprite, windowWH);
 		clock.restart();
 	}
 
 	if (missed >= 3) {
 		missed = 3;
+		std::cout << "-= GAME OVER =-" << std::endl;
+		for (AngyMan* a : angymanList) {
+			std::cout << a << ": Cleared from memory!" << std::endl;
+			a->~AngyMan();
+			delete a;
+		}
+		angymanList.clear();
+
 		state = GameOver;
 	}
 
@@ -227,6 +229,8 @@ void RunGame(sf::RenderWindow& window, Actor& player, std::list <AngyMan*>& angy
 //Using an enum for gamestate in function seemed to cause some issues, so I'm using an int instead as recommended by others online
 void SetUpGame(sf::Text& score, int& points, int& missed, sf::Sound& sound, Actor& player, std::list <AngyMan*>& angymanList, int& state) {
 	//Player stuff setup
+	std::cout << "-= PREPARING GAME =-" << std::endl;
+
 	player.moveSpeed = Vector2(0, 0);
 	player.SetPos(
 		Vector2(
@@ -245,12 +249,6 @@ void SetUpGame(sf::Text& score, int& points, int& missed, sf::Sound& sound, Acto
 
 	//Sound setup
 	sound.play();
-
-	for (AngyMan* a : angymanList) {
-		a->~AngyMan();
-		delete a;
-	}
-	angymanList.clear();
 
 	//Set the gamestate
 	state = Playing;

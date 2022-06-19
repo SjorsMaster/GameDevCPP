@@ -1,6 +1,13 @@
 #include "PhysicsObject.h"
 #include "Vector2.h"
 
+/// <summary>
+/// Cool script that handles a lot of the physics in game.
+/// Thanks Byte for teaching me how to do some of the maths in this script! <3
+/// </summary>
+
+const bool LimitY = false;
+
 bool IsOdd(float x) {
 	int n = floor(x);
 	return n % 2 != 0;
@@ -55,14 +62,18 @@ void PhysicsObject::UpdatePhysics(float dt, sf::Window& gameview) {
 	bool isMirroredY = IsOdd(position.y / worldSize.y);
 
 	//If we have gone out of bounds, bring us back :)
-	position = position.Clamp(worldSize);
-	
+	if (LimitY) {
+		position = position.Clamp(worldSize);
+	}
+	else {
+		position.x = position.Clamp(worldSize).x;
+	}
 	//If we bounced off the side fix position and invert speed (Welcome in the mirror world!)
 	if (isMirroredX) {
 		moveSpeed.x = -moveSpeed.x;
 		position.x = worldSize.x - position.x;
 	}
-	if (isMirroredY) {
+	if (isMirroredY && LimitY) {
 		moveSpeed.y = -moveSpeed.y;
 		position.y = worldSize.y - position.y;
 	}
