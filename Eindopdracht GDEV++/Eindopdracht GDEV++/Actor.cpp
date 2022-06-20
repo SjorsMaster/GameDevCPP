@@ -1,6 +1,6 @@
 #include "Actor.h"
 
-//collision check
+//collision check between self and other actor
 bool Actor::CheckCollision(Actor* B)
 {
 	return (
@@ -11,19 +11,20 @@ bool Actor::CheckCollision(Actor* B)
 	);
 }
 
-
+//Sets the position for both the actor and the sprite
 void Actor::SetPos(Vector2 pos)
 {
 	this->position = Vector2(pos.x, pos.y);
 	body.setPosition(this->position.x, this->position.y);
 }
 
-
+//Returns position
 Vector2 Actor::GetPos()
 {
 	return position;
 }
 
+//This makes sure the sprite matches it's colissionary boundaries
 void Actor::fixBounds()
 {
 	body.setScale(
@@ -33,3 +34,4 @@ void Actor::fixBounds()
 		)
 	);
 }
+

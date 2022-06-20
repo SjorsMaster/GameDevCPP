@@ -13,13 +13,5 @@ public:
 	void fixBounds();
 
 	sf::Sprite body;
-
-/*
-	float velocity; // Snelheid
-	float acceleration; // Hoe veel de snelheid hoger wordt per seconde/frame/timestep/whatever
-	Vector2 position;
-	Vector2 direction; // Vector2(0, -1);
-
-*/
-
 };
+

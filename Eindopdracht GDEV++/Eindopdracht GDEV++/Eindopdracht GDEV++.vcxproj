@@ -156,7 +156,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
-    <ClCompile Include="AngyMan.cpp" />
     <ClCompile Include="Eindopdracht GDEV++.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </AdditionalIncludeDirectories>
@@ -172,7 +171,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
-    <ClInclude Include="AngyMan.h" />
     <ClInclude Include="Eindopdracht GDEV++.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="PhysicsObject.h" />

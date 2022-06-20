@@ -11,10 +11,10 @@ float Clampf(float x, float y)
 	return result;
 }
 
-Vector2::Vector2(float _x, float _y)
+Vector2::Vector2(float x, float y)
 {
-	x = _x;
-	y = _y;
+	this->x = x;
+	this->y = y;
 }
 
 Vector2::Vector2()
