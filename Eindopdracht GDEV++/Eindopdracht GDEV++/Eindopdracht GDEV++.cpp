@@ -130,6 +130,9 @@ int main() {
 			}
 			break;
 		case Playing:
+			//Check input
+			checkKeys(player, dt, window);
+			
 			//run game function with all the data
 			RunGame(window, player, actorList, text, sound, points, missed, dt, clock, texture2);
 			break;
@@ -167,7 +170,6 @@ int main() {
 				break;
 			}
 		}
-		checkKeys(player, dt, window);
 
 		window.draw(text);
 
@@ -198,7 +200,7 @@ void RunGame(sf::RenderWindow& window, Actor& player, std::list <Actor*>& actorL
 	player.SetPos(Vector2(player.GetPos().x, player.GetPos().y));
 	window.draw(player.body);
 
-	//for each enemy in angymanlist window update
+	//for each enemy in actorList window update
 	for (auto iter = actorList.begin(); iter != actorList.end();) {
 		// get an angyman from the index of iter out of the list
 		Actor* entity = *iter;
@@ -316,7 +318,7 @@ void spawnEntity(std::list <Actor*>& actorList, sf::Texture& texture, Vector2 wi
 	//Set some stats
 	entity->gravity = Vector2(0, 100);
 	entity->friction = Vector2(0, 0);
-	entity->moveSpeed = Vector2(0, 0);
+	entity->moveSpeed = Vector2(rand() % 600+ -300, 0);
 	
 	//Fix the colliders cause the width does normally not equal the width of the sprite
 	entity->fixBounds();

@@ -1,7 +1,7 @@
 #include "Vector2.h"
 #include <cmath>
 
-// use modulus to restrict x to the range [0, y)
+// use modulus to restrict x to the range (0, y)
 float Clampf(float x, float y)
 {
 	float result = fmod(x, y);

@@ -1,5 +1,14 @@
-﻿  Eindopdracht GDEV++.cpp
-D:\Git\GameDevCPP\Eindopdracht GDEV++\Eindopdracht GDEV++\Eindopdracht GDEV++.cpp(49,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-D:\Git\GameDevCPP\Eindopdracht GDEV++\Eindopdracht GDEV++\Eindopdracht GDEV++.cpp(325,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\Git\GameDevCPP\Eindopdracht GDEV++\Eindopdracht GDEV++\Eindopdracht GDEV++.cpp(326,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  PhysicsObject.cpp
+D:\Git\GameDevCPP\Eindopdracht GDEV++\Eindopdracht GDEV++\PhysicsObject.cpp(14,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\Git\GameDevCPP\Eindopdracht GDEV++\Eindopdracht GDEV++\PhysicsObject.cpp(22,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\Git\GameDevCPP\Eindopdracht GDEV++\Eindopdracht GDEV++\PhysicsObject.cpp(46,70): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+D:\Git\GameDevCPP\Eindopdracht GDEV++\Eindopdracht GDEV++\PhysicsObject.cpp(46,48): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
   Eindopdracht GDEV++.vcxproj -> D:\Git\GameDevCPP\Eindopdracht GDEV++\Debug\Eindopdracht GDEV++.exe
