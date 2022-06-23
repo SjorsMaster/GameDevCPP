@@ -1,6 +1,6 @@
 #pragma once
 #include "Vector2.h"
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 
 class PhysicsObject
 {

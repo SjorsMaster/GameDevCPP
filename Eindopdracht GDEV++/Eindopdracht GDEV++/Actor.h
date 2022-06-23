@@ -1,7 +1,7 @@
 #pragma once
 #include "Vector2.h"
 #include "PhysicsObject.h"
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 
 class Actor : public PhysicsObject
 {

@@ -1,5 +1,6 @@
 #include "PhysicsObject.h"
 #include "Vector2.h"
+#include <cmath>
 
 /// <summary>
 /// Cool script that handles a lot of the physics in game.

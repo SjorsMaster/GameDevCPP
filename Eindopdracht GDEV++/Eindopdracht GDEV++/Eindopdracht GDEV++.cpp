@@ -2,8 +2,8 @@
 //
 
 #include <iostream>
-#include <SFML\Audio.hpp>
-#include <SFML\Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <SFML/Graphics.hpp>
 #include "Actor.h" 
 #include "Vector2.h" 
 #include "Eindopdracht GDEV++.h"
@@ -94,6 +94,8 @@ int main() {
 		(unsigned int)windowWH.x, (unsigned int)windowWH.y),
 		"Tale of Nico and the Mochis", sf::Style::Close | sf::Style::Titlebar
 	);
+	//Fixes weird behaviour on Linux specifically
+	window.setFramerateLimit(60);
 
 	std::string menuText = "Welcome to the game!\n\n"
 		"Use the left [<] and right [>] arrow keys to move.\n\n"
@@ -130,6 +132,12 @@ int main() {
 			}
 			break;
 		case Playing:
+			//Set text
+			text.setString(
+				"Score: " + std::to_string(points) +
+				"\nMissed: " + std::to_string(missed)
+			);
+
 			//Check input
 			checkKeys(player, dt, window);
 			
@@ -158,15 +166,14 @@ int main() {
 				window.close();
 				break;
 			case sf::Event::LostFocus:
-				lastState = state;
-				state = Pause;
+				if (state == Playing) {
+					state = Pause;
+				}
 				break;
 			case sf::Event::GainedFocus:
-				state = lastState;
-				text.setString(
-					"Score: " + std::to_string(points) +
-					"\nMissed: " + std::to_string(missed)
-				);
+				if (state == Pause) {
+					state = Playing;
+				}
 				break;
 			}
 		}

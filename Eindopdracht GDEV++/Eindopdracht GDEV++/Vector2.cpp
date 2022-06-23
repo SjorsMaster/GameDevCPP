@@ -46,8 +46,8 @@ void Vector2::operator+=(const Vector2& vec)
 
 void Vector2::operator-=(const Vector2& vec)
 {
-	x += vec.x;
-	y += vec.y;
+	x -= vec.x;
+	y -= vec.y;
 }
 
 float Vector2::magnitude()
