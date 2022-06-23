@@ -1,1 +1,6 @@
-﻿  EindOpdracht.vcxproj -> D:\SFML EindOpdr\EindOpdracht\Debug\EindOpdracht.exe
+﻿  Eindopdracht GDEV++.cpp
+d:\git\gamedevcpp\eindopdracht gdev++\eindopdracht gdev++.cpp(49): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+d:\git\gamedevcpp\eindopdracht gdev++\eindopdracht gdev++.cpp(320): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\git\gamedevcpp\eindopdracht gdev++\eindopdracht gdev++.cpp(326): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+d:\git\gamedevcpp\eindopdracht gdev++\eindopdracht gdev++.cpp(327): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  EindOpdracht.vcxproj -> D:\Git\GameDevCPP\Eindopdracht GDEV++\Debug\EindOpdracht.exe

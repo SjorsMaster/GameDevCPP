@@ -220,10 +220,6 @@ void RunGame(sf::RenderWindow& window, Actor& player, std::list <Actor*>& actorL
 		//check collision between player and entity, add points if needed, play a sound and clean up the entity
 		if (player.CheckCollision(entity)) {
 			points++;
-			text.setString(
-				"Score: " + std::to_string(points) +
-				"\nMissed: " + std::to_string(missed)
-			);
 			std::cout << *iter << ": Captured!" << std::endl;
 			iter = actorList.erase(iter);
 			sound.setPitch((float)(rand() % 100 + 10) / 100);
@@ -235,10 +231,6 @@ void RunGame(sf::RenderWindow& window, Actor& player, std::list <Actor*>& actorL
 		else if (entity->GetPos().y > windowWH.y) {
 			std::cout << *iter << ": Missed!" << std::endl;
 			missed++;
-			text.setString(
-				"Score: " + std::to_string(points) +
-				"\nMissed: " + std::to_string(missed)
-			);
 			iter = actorList.erase(iter);
 			entity->~Actor();
 			delete entity;
