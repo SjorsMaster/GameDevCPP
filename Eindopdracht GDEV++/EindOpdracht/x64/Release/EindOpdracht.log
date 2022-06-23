@@ -1,0 +1,16 @@
+﻿  Actor.cpp
+  Eindopdracht GDEV++.cpp
+d:\offline projects\gamedev eindopdracht\eindopdracht gdev++.cpp(49): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+d:\offline projects\gamedev eindopdracht\eindopdracht gdev++.cpp(328): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\offline projects\gamedev eindopdracht\eindopdracht gdev++.cpp(334): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+d:\offline projects\gamedev eindopdracht\eindopdracht gdev++.cpp(335): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  PhysicsObject.cpp
+d:\offline projects\gamedev eindopdracht\physicsobject.cpp(15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+d:\offline projects\gamedev eindopdracht\physicsobject.cpp(23): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+d:\offline projects\gamedev eindopdracht\physicsobject.cpp(47): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+  Vector2.cpp
+sfml-graphics-s.lib(RenderStates.cpp.obj) : fatal error LNK1112: module machine type 'x86' conflicts with target machine type 'x64'

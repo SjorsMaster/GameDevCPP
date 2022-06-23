@@ -1,9 +1,0 @@
-﻿  Actor.cpp
-  AngyMan.cpp
-D:\Git\GameDevCPP\Eindopdracht GDEV++\Eindopdracht GDEV++\AngyMan.cpp(19,78): error C2039: 'speed': is not a member of 'AngyMan'
-D:\Git\GameDevCPP\Eindopdracht GDEV++\Eindopdracht GDEV++\AngyMan.h(3): message : see declaration of 'AngyMan'
-D:\Git\GameDevCPP\Eindopdracht GDEV++\Eindopdracht GDEV++\AngyMan.cpp(30,33): warning C4305: '*=': truncation from 'double' to 'float'
-D:\Git\GameDevCPP\Eindopdracht GDEV++\Eindopdracht GDEV++\AngyMan.cpp(34,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\Git\GameDevCPP\Eindopdracht GDEV++\Eindopdracht GDEV++\AngyMan.cpp(35,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Physics.cpp
-  Player.cpp
